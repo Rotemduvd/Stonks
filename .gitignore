@@ -1,0 +1,90 @@
+# ====================================
+# 🐍 Python
+# ====================================
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+venv/
+venv_stonks/
+env/
+.venv/
+
+# Distribution / packaging
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+
+# IPython / Jupyter
+.ipynb_checkpoints
+
+# Pyre type checker
+.pyre/
+
+# pytype
+.pytype/
+
+# Cython debug symbols
+cython_debug/
+
+# ====================================
+# 📝 Project-specific
+# ====================================
+
+# Local data files (if you ever save CSVs or logs)
+data/
+logs/
+*.csv
+
+# API keys / secrets (keep out of git)
+.env
+*.env
+
+# Ignore editor-specific files
+.vscode/
+.idea/
+
+# macOS
+.DS_Store
+
+# ====================================
+# 🔥 Optional extras
+# ====================================
+
+# If you generate plots or reports locally
+*.png
+*.pdf
+reports/
+notebooks/
+
+# If you use GitHub Actions logs locally
+.github/workflows/__pycache__/
