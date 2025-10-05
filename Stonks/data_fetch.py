@@ -19,6 +19,6 @@ def fetch_historic_data(ticker, period='2y', interval='1d'):
 
 if __name__ == "__main__":
     # Example usage
-    ticker = "AAPL"
+    ticker = "NVDA"
     data = fetch_historic_data(ticker, period='1y', interval='1d')
     print(data.tail())
