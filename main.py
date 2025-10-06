@@ -14,6 +14,24 @@ def compute_indicators(df):
     df['GoldenCross'] = crossover_above(df['SMA50'], df['SMA200'])
     return df
 
+def format_alerts(all_alerts):
+    if not all_alerts:
+        return "✅ No alerts generated."
+
+    header_time = all_alerts[0]['timestamp'].strftime("%d/%m/%Y %H:%M")
+    lines = [f"🚨 *Stock Alerts* ({header_time})\n"]
+
+    for alert in all_alerts:
+        ticker = alert['ticker']
+        price = alert['last_price']
+        lines.append(f"📉 *{ticker}* — ${price:.2f}")
+        for msg in alert['alerts']:
+            msg = msg.strip().rstrip(".")
+            lines.append(f"• {msg}")
+        lines.append("")
+
+    return "\n".join(lines).strip()
+
 def main():
     all_alerts = []
 
@@ -37,15 +55,12 @@ def main():
         if alerts:
          all_alerts.append(alerts)
 
-    # Print all alerts
     if all_alerts:
-        msg_lines =["\n 🚨 Alerts: \n"]
-        for alert in all_alerts:
-            ts_str = alert['timestamp'].strftime("%d/%m/%Y %H:%M")
-            msg_lines.append(f"{alert['ticker']} - Last price: ${alert['last_price']:.2f} (@ {ts_str})")
-            for msg in alert['alerts']:
-                msg_lines.append(f"  ‣ {msg}")
-        send_telegram_message("\n".join(msg_lines))
+        message = format_alerts(all_alerts)
+        print("\n" + message)
+        send_telegram_message(message)
+    else:
+        print("✅ No alerts generated.")
 
 if __name__ == "__main__":
     main()
