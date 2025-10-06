@@ -1,4 +1,4 @@
-from Stonks.data_fetch import fetch_historic_data
+from Stonks.data_fetch import fetch_historic_data, fetch_current_price
 from Stonks.indicators import sma, rsi, volume_spike, pct_off_52w_high, crossover_above
 from Stonks.alerts import check_alerts
 TICKERS = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "NLR", "OKLO", "NFLX", "META"]
@@ -14,20 +14,35 @@ def compute_indicators(df):
 
 def main():
     all_alerts = []
+
     for ticker in TICKERS:
-        print(f"Fetching data for {ticker}...")
-        df = fetch_historic_data(ticker, period='1y', interval='1d')
+
+        # Fetch historical data for indicators
+        df = fetch_historic_data(ticker)
         if df.empty:
             print(f"No data found for {ticker}. Skipping.")
             continue
         df = compute_indicators(df)
-        alerts = check_alerts(df, ticker)
-        all_alerts.extend(alerts)
 
+        # Fetch current price and timestamp
+        current_price, current_ts = fetch_current_price(ticker)
+        if current_price is None or current_ts is None:
+            print(f"No current price data for {ticker}. Skipping.")
+            continue
+
+        # Check for alerts
+        alerts = check_alerts(df,current_price, current_ts, ticker)
+        if alerts:
+         all_alerts.append(alerts)
+
+    # Print all alerts
     if all_alerts:
-        print("Alerts:")
+        print("\n 🚨 Alerts: \n")
         for alert in all_alerts:
-            print(alert)
+            ts_str = alert['timestamp'].strftime("%d/%m/%Y %H:%M")
+            print(f"{alert['ticker']} - Last price: ${alert['last_price']:.2f} (@ {ts_str})")
+            for msg in alert['alerts']:
+                print(f"  ‣ {msg}")
     else:
         print("No alerts generated.")
 
