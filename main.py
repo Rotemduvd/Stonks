@@ -1,7 +1,9 @@
 from Stonks.data_fetch import fetch_historic_data, fetch_current_price
 from Stonks.indicators import sma, rsi, volume_spike, pct_off_52w_high, crossover_above
 from Stonks.alerts import check_alerts
-TICKERS = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "NLR", "OKLO", "NFLX", "META"]
+from Stonks.utils import send_telegram_message
+
+TICKERS = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "NLR", "OKLO", "NFLX", "META","PLTR", "SHLD"]
 
 def compute_indicators(df):
     df['SMA50'] = sma(df['Close'], window=50)
@@ -37,14 +39,13 @@ def main():
 
     # Print all alerts
     if all_alerts:
-        print("\n 🚨 Alerts: \n")
+        msg_lines =["\n 🚨 Alerts: \n"]
         for alert in all_alerts:
             ts_str = alert['timestamp'].strftime("%d/%m/%Y %H:%M")
-            print(f"{alert['ticker']} - Last price: ${alert['last_price']:.2f} (@ {ts_str})")
+            msg_lines.append(f"{alert['ticker']} - Last price: ${alert['last_price']:.2f} (@ {ts_str})")
             for msg in alert['alerts']:
-                print(f"  ‣ {msg}")
-    else:
-        print("No alerts generated.")
+                msg_lines.append(f"  ‣ {msg}")
+        send_telegram_message("\n".join(msg_lines))
 
 if __name__ == "__main__":
     main()
