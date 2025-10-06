@@ -5,7 +5,8 @@ on:
     branches:
       - main
   schedule:
-    - cron: '0 12 * * 1-5'   # 12:00 UTC → pre-market
+    - cron: '0 13 * * 1-5'   # 13:00 UTC → pre-market
+    - cron: '25 15 * * 1-5'  # 15:25 UTC → market close
     - cron: '0 16 * * 1-5'   # mid-daya
     - cron: '0 21 * * 1-5'   # after-hours
   workflow_dispatch:        # manual trigger
