@@ -6,7 +6,7 @@ on:
       - main
   schedule:
     - cron: '0 12 * * 1-5'   # 12:00 UTC → pre-market
-    - cron: '0 16 * * 1-5'   # mid-day
+    - cron: '0 16 * * 1-5'   # mid-daya
     - cron: '0 21 * * 1-5'   # after-hours
   workflow_dispatch:        # manual trigger
 
