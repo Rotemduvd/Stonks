@@ -19,7 +19,7 @@ def format_alerts(all_alerts):
         return "✅ No alerts generated."
 
     header_time = all_alerts[0]['timestamp'].strftime("%d/%m/%Y %H:%M")
-    lines = [f"🚨 *Stock Alerts* ({header_time})\n"]
+    lines = [f"🚨 Stock Alerts ({header_time})\n"]
 
     for alert in all_alerts:
         ticker = alert['ticker']
