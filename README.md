@@ -1,4 +1,8 @@
-# 📈 Stonks — Automated Stock Alert Bot
+<p align="center">
+  <img src="./assets/stonks.jpeg" alt="Stonks Meme">
+  # Stonks — Automated Stock Alert Bot
+</p>
+
 
 **Stonks** is a Python-based system that automatically checks several big-tech stocks each day,
 calculates key technical indicators, and sends alerts to Telegram when conditions are met.
@@ -152,4 +156,4 @@ Stonks/
 
 MIT License © 2025 [Rotem Duvdevani](https://github.com/RotemDuvdevani)
 
-![Stonks Meme](./assets/stonks.jpeg)
+
