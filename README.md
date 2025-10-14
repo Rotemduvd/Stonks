@@ -3,9 +3,7 @@
 **Stonks** is a Python-based system that automatically checks several big-tech stocks each day,
 calculates key technical indicators, and sends alerts to Telegram when conditions are met.
 
-It runs via **GitHub Actions** (3× daily, Mon–Fri),
-and can also be triggered manually — either from the GitHub UI or directly via your **Telegram bot** 🤖.
-
+It runs via **GitHub Actions** (3× daily, Mon–Fri)
 ---
 
 ## 🚀 Features
@@ -154,4 +152,4 @@ Stonks/
 
 MIT License © 2025 [Rotem Duvdevani](https://github.com/RotemDuvdevani)
 
-![Stonks Meme](./129E1F81-8E43-43FE-8B2D-3339ED1D0CC1.jpeg)
+![Stonks Meme](./assets/stonks.jpeg)
