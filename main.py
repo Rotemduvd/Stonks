@@ -3,7 +3,7 @@ from Stonks.indicators import sma, rsi, volume_spike, pct_off_52w_high, crossove
 from Stonks.alerts import check_alerts
 from Stonks.utils import send_telegram_message
 
-TICKERS = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "NLR", "OKLO", "NFLX", "META","PLTR", "SHLD", "ORCL", "INTC", "AMD"]
+TICKERS = ["AAPL", "MSFT", "GOOGL", "AMZN", "TSLA", "NVDA", "NLR", "OKLO", "NFLX", "META","PLTR", "SHLD", "ORCL", "INTC", "AMD", "LMT"]
 
 def compute_indicators(df):
     df['SMA50'] = sma(df['Close'], window=50)
