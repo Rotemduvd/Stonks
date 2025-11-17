@@ -33,7 +33,7 @@ def check_alerts(history_df, current_price, current_ts, ticker):
 
     # Golden Cross
     if latest_row.get("GoldenCross", False):
-        alerts.append("יצר 'גולדן קרוס' 🏅 (הממוצע הנע 50 חצה מעלה את 200).")
+        alerts.append("נוצר 'גולדן קרוס' (הממוצע הנע 50 חצה מעלה את 200).")
 
     # Volume spike
     if latest_row.get("VolSpike", 0) >= 1.5 and latest_row["SMA50"] > latest_row["SMA200"]:
